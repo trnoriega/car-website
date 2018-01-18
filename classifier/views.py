@@ -13,11 +13,11 @@ def predictions(request):
 
         'prediction2_path': 'predictions/Acura-Integra_Type_R-2001_1.jpg',
         'prediction2_label': 'Second prediction',
-        'prediction2_link': 'https://www.cars.com',
+        'prediction2_link': 'https://www.autotrader.com', # This one seems to have an easy search url
 
         'prediction3_path': 'predictions/Acura-Integra_Type_R-2001_3.jpg',
         'prediction3_label': 'Third prediction',
-        'prediction3_link': 'https://www.cars.com',
+        'prediction3_link': 'https://www.carvana.com',
         }
     return render(request, 'classifier/predictions.html', context=context_dict)
 
