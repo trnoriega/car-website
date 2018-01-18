@@ -6,7 +6,8 @@ def index(request):
     return render(request, 'classifier/index.html', context=context_dict)
 
 def results(request):
-    return HttpResponse('This is the results page', )
+    context_dict = {'boldmessage': '1,2,3 Results!'}
+    return render(request, 'classifier/results.html', context=context_dict)
 
 def about(request):
     return HttpResponse('This is the About page')
