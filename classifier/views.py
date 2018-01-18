@@ -5,21 +5,21 @@ def index(request):
     context_dict = {}
     return render(request, 'classifier/index.html', context=context_dict)
 
-def results(request):
+def predictions(request):
     context_dict = {
-        'result1_path': 'results/Acura-Integra_Type_R-2001_0.jpg',
-        'result1_label': 'Top result',
-        'result1_link': 'https://www.cars.com',
+        'prediction1_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
+        'prediction1_label': 'Top prediction',
+        'prediction1_link': 'https://www.cars.com',
 
-        'result2_path': 'results/Acura-Integra_Type_R-2001_1.jpg',
-        'result2_label': 'Second result',
-        'result2_link': 'https://www.cars.com',
+        'prediction2_path': 'predictions/Acura-Integra_Type_R-2001_1.jpg',
+        'prediction2_label': 'Second prediction',
+        'prediction2_link': 'https://www.cars.com',
 
-        'result3_path': 'results/Acura-Integra_Type_R-2001_3.jpg',
-        'result3_label': 'Third result',
-        'result3_link': 'https://www.cars.com',
+        'prediction3_path': 'predictions/Acura-Integra_Type_R-2001_3.jpg',
+        'prediction3_label': 'Third prediction',
+        'prediction3_link': 'https://www.cars.com',
         }
-    return render(request, 'classifier/results.html', context=context_dict)
+    return render(request, 'classifier/predictions.html', context=context_dict)
 
 def about(request):
     context_dict = {}
