@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
 
 def index(request):
-    return HttpResponse('This is the landing page')
+    context_dict = {'boldmessage': 'Classifying cars is awesome!'}
+    return render(request, 'classifier/index.html', context=context_dict)
