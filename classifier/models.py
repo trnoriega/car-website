@@ -8,7 +8,7 @@ class Car(models.Model):
     make = models.CharField(max_length=100)
     car_model = models.CharField(max_length=150)
     year = models.CharField(max_length=4)
-    path = FilePathField(path=os.path.join(settings.MEDIA_DIR, 'results'))
+    path = models.FilePathField(path=os.path.join(settings.MEDIA_DIR, 'results'))
     def __str__(self):
         return self.label
 
