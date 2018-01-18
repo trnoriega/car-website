@@ -14,4 +14,5 @@ def results(request):
     return render(request, 'classifier/results.html', context=context_dict)
 
 def about(request):
-    return HttpResponse('This is the About page')
+    context_dict = {}
+    return render(request, 'classifier/about.html', context=context_dict)
