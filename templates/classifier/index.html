@@ -15,15 +15,30 @@
     <body>
         <img height="140" src="{% static "images/class_montage.jpg" %}"
             alt="Class montage of cars" />
-        <h1>I like the car in this picture. Help me buy it!</h1>
+        <h1>I like the car in my picture. Help me buy it!</h1>
         <div>
             <p>
                 Please upload your image:
             </p>
-            <p>
+                <form id="input_image_form" method="post" action="/classifier/"> 
+                    {% csrf_token %}
+                    {% for hidden in form.hidden_fields %}
+                                        {{ hidden }}
+                                    {% endfor %}
+                                    {% for field in form.visible_fields %}
+                                        {{ field.errors }}
+                                        {{ field.help_text }}
+                                        {{ field }}
+                    {% endfor %}
+                    <p>
+                        <input type="submit" name="submit" value="submit" />
+                    </p>
+                    
+                </form>
+           <!-- <p>
                 <a href="/classifier/predictions/"><img height="200" src="{% static "images/upload_icon.png" %}"
                     alt="Upload Icon" /></a>
-            </p>
+            </p> -->
         </div>
         <div>
             <a href="/classifier/about/">About</a>

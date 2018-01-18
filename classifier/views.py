@@ -1,8 +1,21 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .forms import InputImageForm
+
 def index(request):
-    context_dict = {}
+    form = InputImageForm()
+    if request.method == 'POST':
+        form = InputImageForm(request.POST)
+        # Have we been provided with a valid form?
+        if form.is_valid():
+            # Save the new category to the database.
+            form.save(commit=True)
+            return predictions(request)
+        else:
+            print(form.errors)
+
+    context_dict = {'form': form}
     return render(request, 'classifier/index.html', context=context_dict)
 
 def predictions(request):
