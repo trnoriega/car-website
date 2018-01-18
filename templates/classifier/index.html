@@ -11,16 +11,18 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
-    <img src="{% static "images/class_montage.jpg" %}"
-        alt="Class montage of cars" />
-    <h1>Thomas Noriega believes that:</h1>
-    <div>
-        <strong>{{ boldmessage }}</strong><br /> 
-    </div>
-    <br>
-    <div>
-        <a href="/classifier/about/">About</a>
-    </div> 
-</body>
+<center>
+    <body>
+        <img height="140" src="{% static "images/class_montage.jpg" %}"
+            alt="Class montage of cars" />
+        <h1>Thomas Noriega believes that:</h1>
+        <div>
+            <strong>{{ boldmessage }}</strong><br /> 
+        </div>
+        <br>
+        <div>
+            <a href="/classifier/about/">About</a>
+        </div> 
+    </body>
+</center>
 </html>
