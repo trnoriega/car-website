@@ -15,11 +15,16 @@
     <body>
         <img height="140" src="{% static "images/class_montage.jpg" %}"
             alt="Class montage of cars" />
-        <h1>Thomas Noriega believes that:</h1>
+        <h1>I like the car in this picture. Help me buy it!</h1>
         <div>
-            <strong>{{ boldmessage }}</strong><br /> 
+            <p>
+                Please upload your image:
+            </p>
+            <p>
+                <a href="/classifier/results/"><img height="200" src="{% static "images/upload_icon.png" %}"
+                    alt="Upload Icon" /></a>
+            </p>
         </div>
-        <br>
         <div>
             <a href="/classifier/about/">About</a>
         </div> 
