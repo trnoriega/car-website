@@ -11,17 +11,32 @@
     <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
     <script src="main.js"></script>
 </head>
-<body>
-    <img src="{% static "images/class_montage.jpg" %}"
-        alt="Class montage of cars" />
-    <h1>These are your results!</h1>
-    <div>
-        <strong>{{ boldmessage }}</strong><br /> 
-    </div>
-    <br>
-    <div>
-        <a href="/classifier/">Upload a new image</a>
-        <a href="/classifier/about/">About</a>
-    </div> 
-</body>
+<center>
+    <body>
+        <h1>
+            This is the image you put in:
+        </h1>
+        <div>
+            <img src="http://via.placeholder.com/640x480">
+        </div>
+        <h1>These are your results:</h1>
+        <div>
+            <img src="http://via.placeholder.com/320x240">
+            <strong>{{ label1 }}</strong><br /> 
+        </div>
+        <div>
+                <img src="http://via.placeholder.com/320x240">
+                <strong>{{ label2 }}</strong><br /> 
+        </div>
+        <div>
+                <img src="http://via.placeholder.com/320x240">
+                <strong>{{ label3 }}</strong><br /> 
+        </div>
+        <div>
+            <a href="/classifier/">Upload a new image</a>
+            <br>
+            <a href="/classifier/about/">About</a>
+        </div> 
+    </body>
+</center>
 </html>
