@@ -1,7 +1,12 @@
+import os
+
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from .algorithms import load_model, load_lookup_dicto, prepare_image, top3_predictions
+from cars.settings import MEDIA_DIR
 from .forms import InputImageForm
+
 
 def index(request):
     form = InputImageForm()
@@ -12,29 +17,24 @@ def index(request):
             # Save the new category to the database.
             form.save(commit=True)
             image = form.cleaned_data['image']
-            return predictions(request, image)
+
+            ###########################
+            # PREDICTION HAPPENS HERE #
+            ###########################
+            model = load_model()
+            lookup_dicto = load_lookup_dicto()
+            image_path = os.path.join(MEDIA_DIR, 'uploads', image)
+            predictions_dict = top3_predictions(model, image_path, lookup_dicto)
+            
+            return predictions(request, predictions_dict)
+        
         else:
             print(form.errors)
 
     context_dict = {'form': form}
     return render(request, 'classifier/index.html', context=context_dict)
 
-def predictions(request, image):
-    context_dict = {
-        'image': image,
-
-        'prediction1_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
-        'prediction1_label': 'Top prediction',
-        'prediction1_link': 'https://www.cars.com',
-
-        'prediction2_path': 'predictions/Acura-Integra_Type_R-2001_1.jpg',
-        'prediction2_label': 'Second prediction',
-        'prediction2_link': 'https://www.autotrader.com', # This one seems to have an easy search url
-
-        'prediction3_path': 'predictions/Acura-Integra_Type_R-2001_3.jpg',
-        'prediction3_label': 'Third prediction',
-        'prediction3_link': 'https://www.carvana.com',
-        }
+def predictions(request, predictions_dict):
     return render(request, 'classifier/predictions.html', context=context_dict)
 
 def about(request):
