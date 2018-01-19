@@ -74,6 +74,7 @@ def prepare_image(image_path):
     input_image = load_img(image_path, target_size=(IMG_HEIGHT, IMG_WIDTH))
     input_image = img_to_array(input_image)
     input_image = np.expand_dims(input_image, axis=0)
+    input_image = input_image / 255.
     return input_image
 
 def load_lookup_dicto():
