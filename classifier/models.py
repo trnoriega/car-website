@@ -4,7 +4,7 @@ from django.conf import settings
 from django.db import models
 
 class Car(models.Model):
-    label = models.CharField(max_length=200, default='')
+    label = models.CharField(max_length=400, default='')
 
     class Meta:
         db_table = 'car'
