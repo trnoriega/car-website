@@ -17,13 +17,13 @@ def index(request):
             # Save the new category to the database.
             form.save(commit=True)
             image = form.cleaned_data['image']
+            image_path = os.path.join(MEDIA_DIR, 'uploads', image._name)
 
             ###########################
             # PREDICTION HAPPENS HERE #
             ###########################
             model = load_model()
             lookup_dicto = load_lookup_dicto()
-            image_path = os.path.join(MEDIA_DIR, 'uploads', image)
             predictions_dict = top3_predictions(model, image_path, lookup_dicto)
             
             return predictions(request, predictions_dict)
@@ -35,7 +35,7 @@ def index(request):
     return render(request, 'classifier/index.html', context=context_dict)
 
 def predictions(request, predictions_dict):
-    return render(request, 'classifier/predictions.html', context=context_dict)
+    return render(request, 'classifier/predictions.html', context=predictions_dict)
 
 def about(request):
     context_dict = {}
