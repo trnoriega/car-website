@@ -11,15 +11,18 @@ def index(request):
         if form.is_valid():
             # Save the new category to the database.
             form.save(commit=True)
-            return predictions(request)
+            image = form.cleaned_data['image']
+            return predictions(request, image)
         else:
             print(form.errors)
 
     context_dict = {'form': form}
     return render(request, 'classifier/index.html', context=context_dict)
 
-def predictions(request):
+def predictions(request, image):
     context_dict = {
+        'image': image,
+
         'prediction1_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
         'prediction1_label': 'Top prediction',
         'prediction1_link': 'https://www.cars.com',
