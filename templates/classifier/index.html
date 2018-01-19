@@ -13,12 +13,12 @@
 </head>
 <center>
     <body>
-        <img height="140" src="{% static "images/class_montage.jpg" %}"
-            alt="Class montage of cars" />
+        <!-- <img height="140" src="{% static "images/class_montage.jpg" %}"
+            alt="montage of cars" /> -->
         <h1>I like the car in my picture. Help me buy it!</h1>
         <div>
             <p>
-                Please upload your image:
+                Please upload an image of a car you like:
             </p>
                 <form id="input_image_form" method="post" action="/classifier/" enctype="multipart/form-data"> 
                     {% csrf_token %}
