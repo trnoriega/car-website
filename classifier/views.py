@@ -6,7 +6,7 @@ from .forms import InputImageForm
 def index(request):
     form = InputImageForm()
     if request.method == 'POST':
-        form = InputImageForm(request.POST)
+        form = InputImageForm(request.POST, request.FILES)
         # Have we been provided with a valid form?
         if form.is_valid():
             # Save the new category to the database.

@@ -20,7 +20,7 @@
             <p>
                 Please upload your image:
             </p>
-                <form id="input_image_form" method="post" action="/classifier/"> 
+                <form id="input_image_form" method="post" action="/classifier/" enctype="multipart/form-data"> 
                     {% csrf_token %}
                     {% for hidden in form.hidden_fields %}
                                         {{ hidden }}
