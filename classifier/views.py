@@ -3,8 +3,8 @@ import os
 from django.shortcuts import render
 from django.http import HttpResponse
 
-from .algorithms import top3_predictions
-from .apps import prediction_model, lookup_dicto, graph
+from .algorithms import top3_predictions, load_test_predictions_dict
+# from .apps import prediction_model, lookup_dicto, graph #Comment out when testing memory light model
 from .forms import InputImageForm
 from cars.settings import MEDIA_DIR
 
@@ -24,9 +24,11 @@ def index(request):
             ###########################
             # PREDICTION HAPPENS HERE #
             ###########################
-            with graph.as_default():
-                predictions_dict = top3_predictions(prediction_model, image_path, lookup_dicto)
+            # with graph.as_default():
+            #     predictions_dict = top3_predictions(prediction_model, image_path, lookup_dicto)
             
+            predictions_dict = load_test_predictions_dict()
+
             return predictions(request, predictions_dict)
         
         else:

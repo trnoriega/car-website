@@ -122,3 +122,25 @@ def top3_predictions(model, image_path, lookup_dicto):
         }
 
     return context_dict
+
+def load_test_predictions_dict():
+    """
+    Provides a static predictions dictionary to test the app 
+    without having to load the full keras model to memory each time the server starts
+    """
+    context_dict = {
+        'image': 'AM-General_Hummer_SUV-2000.jpg',
+
+        'prediction1_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
+        'prediction1_label': 'Top prediction:',
+        'prediction1_link': 'https://www.cars.com',
+
+        'prediction2_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
+        'prediction2_label': 'Second prediction:',
+        'prediction2_link': 'https://www.autotrader.com', # This one seems to have an easy search url
+
+        'prediction3_path': 'predictions/Acura-Integra_Type_R-2001_0.jpg',
+        'prediction3_label': 'Third prediction:',
+        'prediction3_link': 'https://www.carvana.com',
+        }
+    return context_dict
