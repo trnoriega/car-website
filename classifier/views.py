@@ -26,7 +26,7 @@ def index(request):
             # PREDICTION HAPPENS HERE #
             ###########################
             # with graph.as_default():
-            #     predictions_dict = top5_predictions(prediction_model, image_path, lookup_dicto)
+            #     prediction_labels = top5_predictions(prediction_model, image_path, lookup_dicto)
             
             prediction_labels = load_test_predictions()
             predictions_dict = {

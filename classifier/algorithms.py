@@ -114,25 +114,8 @@ def top5_predictions(model, image_path, lookup_dicto):
     labels = []
     for idx in top_5:
         labels.append(lookup_dicto.get(idx))
-    
 
-    context_dict = {
-        'image': os.path.basename(image_path),
-        
-        'prediction1_path': 'predictions/' + labels[0] + '_0.jpg',
-        'prediction1_label': 'Top prediction: {}'.format(labels[0]),
-        'prediction1_link': 'https://www.cars.com',
-
-        'prediction2_path': 'predictions/' + labels[1] + '_0.jpg',
-        'prediction2_label': 'Second prediction {}'.format(labels[1]),
-        'prediction2_link': 'https://www.autotrader.com', # This one seems to have an easy search url
-
-        'prediction3_path': 'predictions/' + labels[2] + '_0.jpg',
-        'prediction3_label': 'Third prediction {}'.format(labels[2]),
-        'prediction3_link': 'https://www.carvana.com',
-        }
-
-    return context_dict
+    return labels
 
 def load_test_predictions():
     """
