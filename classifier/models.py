@@ -22,6 +22,7 @@ class Car(models.Model):
     model = models.CharField(max_length=150, default='')
     year = models.CharField(max_length=4, default='')
     body_style = models.CharField(max_length=15, choices=BODY_STYLE_CHOICES, default='N/A')
+    url = models.URLField(max_length=400, default='https://www.autotrader.com/')
 
     class Meta:
         db_table = 'car'
