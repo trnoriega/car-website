@@ -10,7 +10,7 @@ import csv
 from classifier.models import Car, BODY_STYLE_CHOICES
 
 body_list = [tup[0] for tup in BODY_STYLE_CHOICES]
-print('body_list:', body_list)
+# print('body_list:', body_list)
 
 FILE_PATH = os.path.join(
     os.getcwd(),
@@ -29,19 +29,33 @@ def populate():
 
 def add_car(label):
     c = Car.objects.get_or_create(label=label)[0]
+    # print('label:', label)
     label_split = label.split('-')
-    c.make = label_split[0].replace('_', ' ')
-    model = label_split[1]
-    model_split = model.split('_')
-    # print('model', model.replace('_', ' '))
-    # print('body-style?:', model_split[-1].upper())
-    if model_split[-1].upper() in body_list:
-        c.body_style = model_split[-1].upper()
-        # print('added:', model_split[-1].upper())
-        model = ' '.join(model_split[:-1])
-    elif model_split[-1].upper() == 'CAB':
-        c.body_style = 'PICKUP'
-    c.model = model.replace('_', ' ')
+    make = label_split[0].replace('_', ' ')
+    if make == 'Mercedes Benz':
+        make = 'Mercedes-Benz'
+    # print(make)
+    c.make = make
+    body_style = 'N/A'
+    model = label_split[1].replace('_', ' ')
+    try:
+        if model.split(' ')[0] in ['Martin', 'Rover']:
+            model = ' '.join(model.split(' ')[1:])
+        if model.split(' ')[-1].upper() in body_list:
+            body_style = model.split(' ')[-1].upper()
+            model = ' '.join(model.split(' ')[:-1])
+        if model.split(' ')[1].lower() in ['class', 'series']:
+            model = '-'.join(model.split(' ')[:2]) +\
+            ' ' + ' '.join(model.split(' ')[2:])
+            # print('entered class/series loop:', model)
+        if model.split(' ')[-1].upper() == 'CAB':
+            body_style = 'PICKUP'
+    except IndexError:
+        pass
+    # print(body_style)
+    # print('model:', model)
+    c.model = model
+    c.body_style = body_style
     c.year = label_split[2]
     c.save()
 

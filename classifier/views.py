@@ -44,6 +44,7 @@ def index(request):
                 prediction_items['model'] = c.model
                 prediction_items['year'] = c.year
                 prediction_items['body'] = c.body_style
+                prediction_items['url'] = c.url
                 predictions_dict['predictions'].append(prediction_items)
 
             return predictions(request, predictions_dict)
