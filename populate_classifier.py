@@ -26,6 +26,11 @@ def populate():
 
 def add_car(label):
     c = Car.objects.get_or_create(label=label)[0]
+    label_split = label.split('-')
+    c.make = label_split[0]
+    c.model = label_split[1]
+    c.body_type = label_split[1]
+    c.year = label_split[2]
     c.save()
 
 if __name__ == '__main__':

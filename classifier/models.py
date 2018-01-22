@@ -3,8 +3,24 @@ import os
 from django.conf import settings
 from django.db import models
 
+BODY_STYLE_CHOICES = (
+        ('N/A', 'N/A'),
+        ('SEDAN', 'SEDAN'),
+        ('SUV', 'SUV'),
+        ('PICKUP', 'PICKUP'),
+        ('MINI-VAN', 'MINI-VAN'),
+        ('HATCHBACK', 'HATCHBACK'),
+        ('CONVERTIBLE', 'CONVERTIBLE'),
+        ('COUPE', 'COUPE'),
+        ('WAGON', 'WAGON'),
+    )
+
 class Car(models.Model):
-    label = models.CharField(max_length=400, default='')
+    label = models.CharField(max_length=200, default='')
+    make = models.CharField(max_length=100, default='')
+    model = models.CharField(max_length=150, default='')
+    year = models.CharField(max_length=4, default='')
+    body_style = models.CharField(max_length=15, choices=BODY_STYLE_CHOICES, default='N/A')
 
     class Meta:
         db_table = 'car'
