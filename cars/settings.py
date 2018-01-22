@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+from .project_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_USER
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +23,7 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'g8@^m+a&+jw-xr5ak3ieiumg-v6zhv+(vfhrk&c&%^h%4eoe-_'
+SECRET_KEY = SECRET_KEY # from project secrets
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -80,9 +81,9 @@ WSGI_APPLICATION = 'cars.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'cars',
-        'USER': 'cars_user',
-        'PASSWORD': 'D9XAxh=fF6(Q&6MGoQ',
+        'NAME': DB_NAME, # from project_secrets
+        'USER': DB_USER, # from project_secrets
+        'PASSWORD': DB_PASSWORD, # from project_secrets
         'HOST': 'localhost',
         'PORT': '',
     }
