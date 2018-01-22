@@ -123,3 +123,16 @@ def load_test_predictions():
     without having to load the full keras model to memory each time the server starts
     """
     return TEST_LABELS
+
+def autotrader_link_maker(car_instance):
+    """
+    Generates a custom autotrader link based on
+    car instance provided
+    """
+    url = 'https://www.autotrader.com/cars-for-sale/{}/{}/{}/zip={}'.format(
+        year,
+        make,
+        model,
+        zip_code,
+    )
+    return url
