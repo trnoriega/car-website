@@ -30,7 +30,7 @@ def populate():
 def add_car(label):
     c = Car.objects.get_or_create(label=label)[0]
     label_split = label.split('-')
-    c.make = label_split[0]
+    c.make = label_split[0].replace('_', ' ')
     model = label_split[1]
     model_split = model.split('_')
     # print('model', model.replace('_', ' '))
