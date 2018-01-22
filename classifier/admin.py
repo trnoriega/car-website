@@ -2,5 +2,8 @@ from django.contrib import admin
 
 from .models import Car, InputImage
 
-admin.site.register(Car)
+class CarAdmin(admin.ModelAdmin):
+    list_display = ['make', 'model', 'year', 'body_style']
+
+admin.site.register(Car, CarAdmin)
 admin.site.register(InputImage)

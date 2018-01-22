@@ -7,7 +7,10 @@ django.setup()
 
 import csv
 
-from classifier.models import Car
+from classifier.models import Car, BODY_STYLE_CHOICES
+
+body_list = [tup[0] for tup in BODY_STYLE_CHOICES]
+print('body_list:', body_list)
 
 FILE_PATH = os.path.join(
     os.getcwd(),
@@ -21,18 +24,28 @@ def populate():
         label_list = list(reader)[0]
 
     for label in label_list:
-        print(label)
+        # print(label)
         add_car(label)
 
 def add_car(label):
     c = Car.objects.get_or_create(label=label)[0]
     label_split = label.split('-')
     c.make = label_split[0]
-    c.model = label_split[1]
-    c.body_type = label_split[1]
+    model = label_split[1]
+    model_split = model.split('_')
+    # print('model', model.replace('_', ' '))
+    # print('body-style?:', model_split[-1].upper())
+    if model_split[-1].upper() in body_list:
+        c.body_style = model_split[-1].upper()
+        # print('added:', model_split[-1].upper())
+        model = ' '.join(model_split[:-1])
+    elif model_split[-1].upper() == 'CAB':
+        c.body_style = 'PICKUP'
+    c.model = model.replace('_', ' ')
     c.year = label_split[2]
     c.save()
 
 if __name__ == '__main__':
     print('Starting classifier population script')
     populate()
+    print('Classifier population script ended')
