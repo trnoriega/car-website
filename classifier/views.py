@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .algorithms import top5_predictions, load_test_predictions
-from .apps import prediction_model, lookup_dicto, graph #Comment out when testing memory light model
+# from .apps import prediction_model, lookup_dicto, graph #Comment out when testing memory light model
 from .forms import InputImageForm
 from cars.settings import MEDIA_DIR
 from .models import Car
@@ -25,12 +25,13 @@ def index(request):
             ###########################
             # PREDICTION HAPPENS HERE #
             ###########################
-            with graph.as_default():
-                prediction_labels = top5_predictions(prediction_model, image_path, lookup_dicto)
+            # with graph.as_default():
+            #     prediction_labels = top5_predictions(prediction_model, image_path, lookup_dicto)
             
             # prediction_labels = load_test_predictions()
             predictions_dict = {
-                'image': image._name,
+                # 'image': image._name,
+                'image': 'AM-General_Hummer_SUV-2000.jpg',
                 'predictions' : [],
             }
             for label in prediction_labels:
