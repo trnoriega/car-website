@@ -7,15 +7,6 @@ from keras import backend as K
 from keras.models import model_from_json
 from keras.preprocessing.image import load_img, img_to_array
 
-TEST_LABELS = [
-    'Aston_Martin-Martin_V8_Vantage_Convertible-2012',
-    'Aston_Martin-Martin_Virage_Convertible-2012',
-    'Aston_Martin-Martin_V8_Vantage_Coupe-2012',
-    'Dodge-Ram_Pickup_3500_Quad_Cab-2009',
-    'Ford-E_Series_Wagon_Van-2012',
-]
-
-
 
 IMG_WIDTH, IMG_HEIGHT = 299, 299
 if K.image_data_format() == 'channels_first':
@@ -39,13 +30,10 @@ JSON_PATH = os.path.join(
     'InceptionV3_21_FT3_30_40.json'
     )
 
-
 LOOKUP_PATH = os.path.join(
     BASE_DIR,
     'I_15_lookup_dict.pkl'
     )
-
-
 
 def load_model():
     """
@@ -77,7 +65,7 @@ def load_lookup_dicto():
         lookup_dicto = pickle.load(f)
     return lookup_dicto
 
-def top5_predictions(model, image_path, lookup_dicto):
+def load_predictions(model, image_path, lookup_dicto):
     """
     returns populated contect_dict for classifier.views.predictions 
     view based on the predictions made by a pretrained keras model
@@ -99,12 +87,6 @@ def top5_predictions(model, image_path, lookup_dicto):
 
     return labels
 
-def load_test_predictions():
-    """
-    Provides a static predictions dictionary to test the app
-    without having to load the full keras model to memory each time the server starts
-    """
-    return TEST_LABELS
 
 def autotrader_link_maker(car_instance):
     """
