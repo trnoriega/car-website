@@ -4,9 +4,7 @@ import pickle
 import numpy as np
 
 from keras import backend as K
-from keras.applications import InceptionV3
-from keras.layers import Dense
-from keras.models import Sequential
+from keras.models import model_from_json
 from keras.preprocessing.image import load_img, img_to_array
 
 TEST_LABELS = [
@@ -26,55 +24,39 @@ else:
     INPUT_SHAPE = (IMG_WIDTH, IMG_HEIGHT, 3)
 NB_CLASSES = 196
 
-WEIGHTS_PATH = os.path.join(
+BASE_DIR = os.path.join(
     os.path.expanduser('~'), 'Dropbox', 'projects',
-    'cars', 'data', 'InceptionV3',
-    'InceptionV3_13_10_20.h5'
+    'cars', 'data', 'InceptionV3'
     )
+
+WEIGHT_PATH = os.path.join(
+    BASE_DIR,
+    'InceptionV3_21_FT3_30_40.h5'
+    )
+
+JSON_PATH = os.path.join(
+    BASE_DIR,
+    'InceptionV3_21_FT3_30_40.json'
+    )
+
+
 LOOKUP_PATH = os.path.join(
-    os.path.expanduser('~'), 'Dropbox', 'projects',
-    'cars', 'data', 'notebooks', '6_predictions_with_trained_model',
-    'lookup_dicto.pkl'
+    BASE_DIR,
+    'I_15_lookup_dict.pkl'
     )
+
+
 
 def load_model():
     """
     Initializes and loads pretrained weights into keras model to be used for predictions
     """
-    conv_base = InceptionV3(
-        weights='imagenet',
-        include_top=False,
-        pooling='avg',
-        input_shape=INPUT_SHAPE
-    )
+    with open(JSON_PATH, 'r') as json_file:
+        loaded_model_json = json_file.read()
+    json_model = model_from_json(loaded_model_json)
+    json_model.load_weights(WEIGHT_PATH)
 
-    pred_layer_config = {
-        'activation': 'softmax',
-        'activity_regularizer': None,
-        'bias_constraint': None,
-        'bias_initializer': {'class_name': 'Zeros', 'config': {}},
-        'bias_regularizer': None,
-        'kernel_constraint': None,
-        'kernel_initializer': {'class_name': 'VarianceScaling',
-                               'config': {
-                                   'distribution': 'uniform',
-                                   'mode': 'fan_avg',
-                                   'scale': 1.0,
-                                   'seed': 8}
-                              },
-        'kernel_regularizer': None,
-        'name': 'predictions',
-        'trainable': True,
-        'units': NB_CLASSES,
-        'use_bias': True}
-
-    model = Sequential()
-    model.add(conv_base)
-    model.add(Dense(**pred_layer_config))
-
-    model.load_weights(WEIGHTS_PATH)
-
-    return model
+    return json_model
 
 def prepare_image(image_path):
     """
