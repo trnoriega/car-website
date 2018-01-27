@@ -1,5 +1,6 @@
 from django.apps import AppConfig
 from cars.settings import BASE_DIR
+from cars.project_secrets import FAST_TEST_SETTING
 
 import os
 import pickle
@@ -8,7 +9,7 @@ from keras import backend as K
 from keras.models import model_from_json
 
 
-FAST_TEST = True
+FAST_TEST = FAST_TEST_SETTING
 
 DATA_DIR = os.path.join(BASE_DIR, 'data')
 
