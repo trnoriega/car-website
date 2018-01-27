@@ -11,7 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
-from .project_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_USER
+from .project_secrets import SECRET_KEY, DB_NAME, DB_PASSWORD, DB_USER, DEBUG_SETTING, ALLOWED_HOSTS_SETTING
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -26,9 +26,9 @@ MEDIA_DIR = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = SECRET_KEY # from project secrets
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = DEBUG_SETTING
 
-ALLOWED_HOSTS = ["localhost", "127.0.0.1"]
+ALLOWED_HOSTS = ALLOWED_HOSTS_SETTING
 
 
 # Application definition
