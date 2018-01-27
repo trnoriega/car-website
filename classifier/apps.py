@@ -6,6 +6,9 @@ import pickle
 from keras import backend as K
 from keras.models import model_from_json
 
+
+FAST_TEST = True
+
 BASE_DIR = os.path.join(
     os.path.expanduser('~'), 'Dropbox', 'projects',
     'cars', 'data', 'InceptionV3'
@@ -48,10 +51,17 @@ def load_lookup_dicto():
 class ClassifierConfig(AppConfig):
     name = 'classifier'
     def ready(self):
+        
         global prediction_model
         global lookup_dicto
         global graph
-        prediction_model = load_model()
-        prediction_model._make_predict_function()
-        graph = K.get_session().graph
-        lookup_dicto = load_lookup_dicto()
+
+        lookup_dicto = load_lookup_dicto()        
+        if FAST_TEST:
+            prediction_model = []
+            graph = []
+        else:
+            prediction_model = load_model()
+            prediction_model._make_predict_function()
+            graph = K.get_session().graph
+        

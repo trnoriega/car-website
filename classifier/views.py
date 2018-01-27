@@ -9,7 +9,7 @@ from django.http import HttpResponse
 from keras.preprocessing.image import load_img, img_to_array
 
 from cars.settings import MEDIA_DIR
-from .apps import prediction_model, lookup_dicto, graph
+from .apps import prediction_model, lookup_dicto, graph, FAST_TEST
 from .forms import InputImageForm
 from .models import Car
 
@@ -105,8 +105,17 @@ def index(request):
             ###########################
             # PREDICTION HAPPENS HERE #
             ###########################
-            with graph.as_default():
-                prediction_labels = load_predictions(prediction_model, image_path, lookup_dicto)
+            if FAST_TEST:
+                prediction_labels = [
+                    'Acura-Integra_Type_R-2001',
+                    'Audi-RS_4_Convertible-2008',
+                    'BMW-Z4_Convertible-2012',
+                    'Chevrolet-Impala_Sedan-2007',
+                    'Dodge-Charger_SRT_8-2009',
+                ]
+            else:
+                with graph.as_default():
+                    prediction_labels = load_predictions(prediction_model, image_path, lookup_dicto)
 
             predictions_dict = {
                 'image': image._name,
