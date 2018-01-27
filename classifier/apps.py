@@ -1,4 +1,5 @@
 from django.apps import AppConfig
+from cars.settings import BASE_DIR
 
 import os
 import pickle
@@ -9,23 +10,20 @@ from keras.models import model_from_json
 
 FAST_TEST = True
 
-BASE_DIR = os.path.join(
-    os.path.expanduser('~'), 'Dropbox', 'projects',
-    'cars', 'data', 'InceptionV3'
-    )
+DATA_DIR = os.path.join(BASE_DIR, 'data')
 
 WEIGHT_PATH = os.path.join(
-    BASE_DIR,
+    DATA_DIR,
     'InceptionV3_21_FT3_30_40.h5'
     )
 
 JSON_PATH = os.path.join(
-    BASE_DIR,
+    DATA_DIR,
     'InceptionV3_21_FT3_30_40.json'
     )
 
 LOOKUP_PATH = os.path.join(
-    BASE_DIR,
+    DATA_DIR,
     'I_15_lookup_dict.pkl'
     )
 
