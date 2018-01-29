@@ -3,6 +3,7 @@
 data/
 media/
 cars/project_secrets.py
+/static/
 
 # vscode #
 ##########
