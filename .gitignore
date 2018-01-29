@@ -1,7 +1,6 @@
 # project-specific #
 ####################
 data/
-static/
 media/
 cars/project_secrets.py
 
