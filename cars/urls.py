@@ -21,7 +21,7 @@ from django.contrib import admin
 
 
 urlpatterns = [
-    url(r'^classifier/', include('classifier.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'', include('classifier.urls')),
+    url(r'^car-match/', include('classifier.urls')),
+    url(r'^', include('classifier.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

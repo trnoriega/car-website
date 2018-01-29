@@ -40,7 +40,7 @@
       </div>
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
-          <a href="/classifier/" class="navbar-brand d-flex align-items-center">
+          <a href="{% url 'classifier:index' %}" class="navbar-brand d-flex align-items-center">
             <strong>CAR MATCH</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
@@ -57,7 +57,7 @@
           <h1 class="jumbotron-heading">Please upload a photo of a car you like</h1>
           <p class="lead text-muted">We will try to match it with our database, at the very least you'll see some cars that look like the one you are interested in!</p>
           <div>
-            <form id="input_image_form" method="post" action="/classifier/" enctype="multipart/form-data"> 
+            <form id="input_image_form" method="post" action="{% url 'classifier:index' %}" enctype="multipart/form-data"> 
                 {% csrf_token %}
                 {% for hidden in form.hidden_fields %}
                                     {{ hidden }}
