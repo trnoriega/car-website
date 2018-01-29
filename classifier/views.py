@@ -134,8 +134,8 @@ def index(request):
                 prediction_items['body'] = c.body_style
                 prediction_items['url'] = c.url
                 predictions_dict['predictions'].append(prediction_items)
-
-            return predictions(request, predictions_dict)
+            request.session['predictions_dict'] = predictions_dict
+            return predictions(request)
 
         else:
             print(form.errors)
@@ -143,7 +143,9 @@ def index(request):
     context_dict = {'form': form}
     return render(request, 'classifier/index.html', context=context_dict)
 
-def predictions(request, predictions_dict):
+def predictions(request):
+    predictions_dict = request.session.get('predictions_dict')
+    print(predictions_dict)
     return render(request, 'classifier/predictions.html', context=predictions_dict)
 
 def about(request):
