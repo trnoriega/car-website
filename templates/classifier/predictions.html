@@ -56,7 +56,7 @@
                             <div class="card mb-4 box-shadow">
                                 <img class="card-img-top" src="{{ MEDIA_URL }}uploads/{{ image }}" alt="Input Image">
                                 <div class="card-body">
-                                    <p class="card-text">Your upload</p>
+                                    <p class="card-text"> <strong>Your upload</strong> </p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <a type="button" class="btn btn-sm btn-outline-secondary" href="/classifier">Upload a different photo</a>
@@ -72,6 +72,7 @@
                                     <img class="card-img-top" src="{{ MEDIA_URL }}{{ prediction_items.path }}" alt="Prediction Image">
                                     <div class="card-body">
                                         <p class="card-text">
+                                            <strong>MATCH {{ forloop.counter }}</strong> <br>
                                             MAKE: {{ prediction_items.make }} <br>
                                             MODEL: {{ prediction_items.model }} <br>
                                             YEAR: {{ prediction_items.year }} <br>
