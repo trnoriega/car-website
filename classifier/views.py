@@ -141,7 +141,7 @@ def index(request):
             print(form.errors)
 
     context_dict = {'form': form}
-    return render(request, 'classifier/index_bs2.html', context=context_dict)
+    return render(request, 'classifier/index.html', context=context_dict)
 
 def predictions(request):
     predictions_dict = request.session.get('predictions_dict')

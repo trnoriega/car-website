@@ -1,48 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 
-{% load staticfiles %}
+{% load static %}
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Car Make/Model/Year Classifier</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<center>
-    <body>
-        <!-- <img height="140" src="{% static "images/class_montage.jpg" %}"
-            alt="montage of cars" /> -->
-        <h1>I like the car in my picture. Help me buy it!</h1>
-        <div>
-            <p>
-                Please upload an image of a car you like:
-            </p>
-                <form id="input_image_form" method="post" action="/classifier/" enctype="multipart/form-data"> 
-                    {% csrf_token %}
-                    {% for hidden in form.hidden_fields %}
-                                        {{ hidden }}
-                                    {% endfor %}
-                                    {% for field in form.visible_fields %}
-                                        {{ field.errors }}
-                                        {{ field.help_text }}
-                                        {{ field }}
-                    {% endfor %}
-                    <p>
-                        <input type="submit" name="submit" value="submit" />
-                    </p>
-                    
-                </form>
-           <!-- <p>
-                <a href="/classifier/predictions/"><img height="200" src="{% static "images/upload_icon.png" %}"
-                    alt="Upload Icon" /></a>
-            </p> -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Car Match</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static "classifier/css/album.css" %}">
+  </head>
+
+  <body>
+
+    <header>
+      <div class="collapse bg-dark" id="navbarHeader">
+        <div class="container">
+          <div class="row">
+            <div class="col-sm-8 col-md-7 py-4">
+              <h4 class="text-white">About</h4>
+              <p class="text-muted">This project was developed as part of a fellowship with Insight Data Science</p>
+            </div>
+            <div class="col-sm-4 offset-md-1 py-4">
+              <h4 class="text-white">More</h4>
+              <ul class="list-unstyled">
+                <li><a href="https://www.linkedin.com/in/thomasnoriega" class="text-white">LinkedIn</a></li>
+                <li><a href="https://github.com/trnoriega" class="text-white">Github</a></li>
+              </ul>
+            </div>
+          </div>
         </div>
-        <div>
-            <a href="/classifier/about/">About</a>
-        </div> 
-    </body>
-</center>
+      </div>
+      <div class="navbar navbar-dark bg-dark box-shadow">
+        <div class="container d-flex justify-content-between">
+          <a href="/classifier/" class="navbar-brand d-flex align-items-center">
+            <strong>CAR MATCH</strong>
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main role="main">
+
+      <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Please upload a photo of a car you like</h1>
+          <p class="lead text-muted">We will try to match it with our database, at the very least you'll see some cars that look like the one you are interested in!</p>
+          <div>
+            <form id="input_image_form" method="post" action="/classifier/" enctype="multipart/form-data"> 
+                {% csrf_token %}
+                {% for hidden in form.hidden_fields %}
+                                    {{ hidden }}
+                                {% endfor %}
+                                {% for field in form.visible_fields %}
+                                    {{ field.errors }}
+                                    {{ field.help_text }}
+                                    {{ field }}
+                {% endfor %}
+                <p>
+                    <input class="btn btn-primary my-2" type="submit" name="submit" value="submit" />
+                </p>
+            </form>
+          </div>
+  
+          <!-- <p>
+            <a href="#" class="btn btn-primary my-2">Main call to action</a>
+            <a href="#" class="btn btn-secondary my-2">Secondary action</a>
+          </p> -->
+        </div>
+      </section>
+    </main>
+
+    <!-- <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+      </div>
+    </footer> -->
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>

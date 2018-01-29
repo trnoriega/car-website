@@ -1,42 +1,108 @@
 <!DOCTYPE html>
 
-{% load staticfiles %}
+{% load static %}
 
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>predictions</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
-</head>
-<center>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <title>Matches</title>
+
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <!-- Custom styles for this template -->
+        <link rel="stylesheet" href="{% static "classifier/css/album.css" %}">
+    </head>
+
     <body>
-        <h1>
-            This is the image you put in:
-        </h1>
-        <div>
-            <img height= "255" src="{{ MEDIA_URL }}uploads/{{ image }}">
-        </div>
-        <h1>We think your car is one of these 5:</h1>
-        <div>
-            {% for prediction_items in predictions %}
-                <p>
-                    <img height="255" src="{{ MEDIA_URL }}{{ prediction_items.path }}"><br>
-                    MAKE: {{ prediction_items.make }} <br>
-                    MODEL: {{ prediction_items.model }} <br>
-                    YEAR: {{ prediction_items.year }} <br>
-                    BODY-STYLE: {{ prediction_items.body }} <br>
-                    <a href={{ prediction_items.url }} >Click here to browse listings</a>
-                </p>
-            {% endfor %}
-        </div>
-        <div>
-            <a href="/classifier/">Upload a new image</a>
-            <br>
-            <a href="/classifier/about/">About</a>
-        </div> 
-    </body>
-</center>
+        <header>
+            <div class="collapse bg-dark" id="navbarHeader">
+                <div class="container">
+                <div class="row">
+                    <div class="col-sm-8 col-md-7 py-4">
+                    <h4 class="text-white">About</h4>
+                    <p class="text-muted">This project was developed as part of a fellowship with Insight Data Science</p>
+                    </div>
+                    <div class="col-sm-4 offset-md-1 py-4">
+                    <h4 class="text-white">More</h4>
+                    <ul class="list-unstyled">
+                        <li><a href="https://www.linkedin.com/in/thomasnoriega" class="text-white">LinkedIn</a></li>
+                        <li><a href="https://github.com/trnoriega" class="text-white">Github</a></li>
+                    </ul>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="navbar navbar-dark bg-dark box-shadow">
+                <div class="container d-flex justify-content-between">
+                <a href="/classifier/" class="navbar-brand d-flex align-items-center">
+                    <strong>CAR MATCH</strong>
+                </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                </div>
+            </div>
+        </header>
+        <main role="main">
+            <div class="album py-5 bg-light">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="card mb-4 box-shadow">
+                                <img class="card-img-top" src="{{ MEDIA_URL }}uploads/{{ image }}" alt="Input Image">
+                                <div class="card-body">
+                                    <p class="card-text">Your upload</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <a type="button" class="btn btn-sm btn-outline-secondary" href="/classifier">Upload a different photo</a>
+                                        </div>
+                                    <!-- <small class="text-muted">9 mins</small> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% for prediction_items in predictions %}
+                        <div class="col-md-4">
+                                <div class="card mb-4 box-shadow">
+                                    <img class="card-img-top" src="{{ MEDIA_URL }}{{ prediction_items.path }}" alt="Prediction Image">
+                                    <div class="card-body">
+                                        <p class="card-text">
+                                            MAKE: {{ prediction_items.make }} <br>
+                                            MODEL: {{ prediction_items.model }} <br>
+                                            YEAR: {{ prediction_items.year }} <br>
+                                            BODY-STYLE: {{ prediction_items.body }} <br>
+                                        </p>
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div class="btn-group">
+                                                <a type="button" class="btn btn-sm btn-outline-secondary" href={{ prediction_items.url }}>Browse listings</a>
+                                            </div>
+                                        <!-- <small class="text-muted">9 mins</small> -->
+                                        </div>
+                                    </div>
+                                </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </main>
+    <!-- <footer class="text-muted">
+      <div class="container">
+        <p class="float-right">
+          <a href="#">Back to top</a>
+        </p>
+      </div>
+    </footer> -->
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
 </html>
