@@ -1,7 +1,5 @@
-# car-website repository
+# [CarMatch](www.thomasnoriega.com/carmatch) Django Code
 
-This repository is paired with the car-classifier repository. It includes to code to make a 
-Django web application that uses the model trained in car-classifier to help users identify
-car make/year/model/body-style in pictures they upload to the app.
+This repository contains the django code that runs the [CarMatch](www.thomasnoriega.com/carmatch) website. 
 
-This project was developed as part of the Insight Data Science Fellowship
+It implements the Inception_v3 2D convolutional neural network trained and validated in the [car-classifier](https://github.com/trnoriega/car-classifier) repository.
