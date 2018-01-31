@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Car Match</title>
+    <title>CarMatch</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -42,7 +42,7 @@
       <div class="navbar navbar-dark bg-dark box-shadow">
         <div class="container d-flex justify-content-between">
           <a href="{% url 'classifier:index' %}" class="navbar-brand d-flex align-items-center">
-            <strong>CAR MATCH</strong>
+            <strong style="color:#cc0000">Car</strong><strong>Match</strong>
           </a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -55,7 +55,10 @@
 
       <section class="jumbotron text-center">
         <div class="container">
-          <h1 class="jumbotron-heading">Please upload a photo of a car you like</h1>
+          <h1 class="jumbotron-heading">
+            <span style="color:#cc0000">Car</span>Match
+          </h1>
+          <h2 class="jumbotron-heading">Please upload a photo of a car you like</h2>
           <p class="lead text-muted">We will try to match it with our database, at the very least you'll see some cars that look like the one you are interested in!</p>
           <div>
             <form id="input_image_form" method="post" action="{% url 'classifier:index' %}" enctype="multipart/form-data"> 
