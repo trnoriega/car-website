@@ -6,58 +6,55 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
 
-    <title>Savory Identifier</title>
+    <title>CarMatch</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-
-    <!-- Custom styles for this template -->
-    <link rel="stylesheet" href="{% static "savory/css/album.css" %}">
   </head>
-
   <body>
-
-    <header>
-      <div class="collapse bg-dark" id="navbarHeader">
-        <div class="container">
-          <div class="row">
-            <div class="col-sm-8 col-md-7 py-4">
-              <h4 class="text-white">About</h4>
-              <p class="text-muted">This project was developed as part of a fellowship with Insight Data Science</p>
-            </div>
-            <div class="col-sm-4 offset-md-1 py-4">
-              <h4 class="text-white">More</h4>
-              <ul class="list-unstyled">
-                <li><a href="{% url 'landing:index' %}" class="text-white">Projects Home</a></li>
-                <li><a href="https://www.linkedin.com/in/thomasnoriega" class="text-white">LinkedIn</a></li>
-                <li><a href="https://github.com/trnoriega" class="text-white">Github</a></li>
-              </ul>
-            </div>
-          </div>
+    <div class="container">
+      <header class="py-3">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+              <a class="nav-link text-muted" href="{% url 'landing:index' %}">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{% url 'classifier:about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://github.com/trnoriega">Github</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
+          </li>
+        </ul>
+        <div class="col text-center">
+          <h1>CarMatch</h1>
+        </div>
+      </header>
+      <div class="row align-items-start">
+        <div class="col text-start">
+          <h3>Please upload a photo of a car you like</h3>
+          <p class="lead text-muted">
+            We will try to match it with our database, and at the very least you'll see some cars that look like the one you are interested in!
+          </p>
+          <form id="input_image_form" method="post" action="{% url 'classifier:index' %}" enctype="multipart/form-data"> 
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                                {{ hidden }}
+                            {% endfor %}
+                            {% for field in form.visible_fields %}
+                                {{ field.errors }}
+                                {{ field.help_text }}
+                                {{ field }}
+            {% endfor %}
+            <p>
+                <input class="btn btn-primary my-2" type="submit" name="submit" value="submit" />
+            </p>
+          </form>
         </div>
       </div>
-      <div class="navbar navbar-dark bg-dark box-shadow">
-        <div class="container d-flex justify-content-between">
-          <a href="{% url 'classifier:index' %}" class="navbar-brand d-flex align-items-center">
-            <strong>SAVORY IDENTIFIER</strong>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-        </div>
-      </div>
-    </header>
-    <body>
-        <div class="wrapper">
-            <img src="{% static "savory/images/spinner.gif" %}" alt="" class="spinner">
-        </div>
-        <script src="{% static "savory/js/jquery-1.11.1.min.js" %}"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-        <script src="{% static "savory/js/Markdown.Converter.js" %}"></script>
-        <script src="{% static "savory/js/script.js" %}"></script>
-    </body>
- </html>
+    </div>
+  </body>
+</html>
