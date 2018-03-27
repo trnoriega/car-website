@@ -6,8 +6,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
 
         <title>Matches</title>
 
@@ -16,87 +14,65 @@
     </head>
 
     <body>
-        <header>
-            <div class="collapse bg-dark" id="navbarHeader">
-                <div class="container">
-                <div class="row">
-                    <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">This project was developed as part of a fellowship with Insight Data Science</p>
-                    </div>
-                    <div class="col-sm-4 offset-md-1 py-4">
-                    <h4 class="text-white">More</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="{% url 'landing:index' %}" class="text-white">Projects Home</a></li>
-                        <li><a href="https://www.linkedin.com/in/thomasnoriega" class="text-white">LinkedIn</a></li>
-                        <li><a href="https://github.com/trnoriega" class="text-white">Github</a></li>
-                    </ul>
-                    </div>
-                </div>
-                </div>
-            </div>
-            <div class="navbar navbar-dark bg-dark box-shadow">
-                <div class="container d-flex justify-content-between">
-                <a href="{% url 'classifier:index' %}" class="navbar-brand d-flex align-items-center">
-                    <strong>CAR MATCH</strong>
+    <div class="container">
+        <header class="py-3">
+            <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="{% url 'landing:index' %}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="#">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="https://github.com/trnoriega">Github</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted" href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
+            </li>
+            </ul>
+            <div class="col text-center">
+                <a class="text-dark" href="{% url 'classifier:index' %}">
+                    <h1>CarMatch</h1>
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                </div>
             </div>
         </header>
-        <main role="main">
-            <div class="album py-5 bg-light">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="card mb-4 box-shadow">
-                                <img class="card-img-top" src="{{ MEDIA_URL }}uploads/{{ image }}" alt="Input Image">
-                                <div class="card-body">
-                                    <p class="card-text"> <strong>Your upload</strong> </p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'classifier:index' %}">Upload a different photo</a>
-                                        </div>
-                                    <!-- <small class="text-muted">9 mins</small> -->
-                                    </div>
-                                </div>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card border-0 mb-4">
+                    <img class="card-img-top" src="{{ MEDIA_URL }}uploads/{{ image }}" alt="Input Image">
+                    <div class="card-body">
+                        <p class="card-text"> <strong>YOUR UPLOAD</strong> </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-sm btn-outline-secondary" href="{% url 'classifier:index' %}">Upload a different photo</a>
                             </div>
                         </div>
-                        {% for prediction_items in predictions %}
-                        <div class="col-md-4">
-                                <div class="card mb-4 box-shadow">
-                                    <img class="card-img-top" src="{{ MEDIA_URL }}{{ prediction_items.path }}" alt="Prediction Image">
-                                    <div class="card-body">
-                                        <p class="card-text">
-                                            <strong>MATCH {{ forloop.counter }}</strong> <br>
-                                            MAKE: {{ prediction_items.make }} <br>
-                                            MODEL: {{ prediction_items.model }} <br>
-                                            YEAR: {{ prediction_items.year }} <br>
-                                            BODY-STYLE: {{ prediction_items.body }} <br>
-                                        </p>
-                                        <div class="d-flex justify-content-between align-items-center">
-                                            <div class="btn-group">
-                                                <a type="button" class="btn btn-sm btn-outline-secondary" href={{ prediction_items.url }}>Browse listings</a>
-                                            </div>
-                                        <!-- <small class="text-muted">9 mins</small> -->
-                                        </div>
-                                    </div>
-                                </div>
-                        </div>
-                        {% endfor %}
                     </div>
                 </div>
             </div>
-        </main>
-    <!-- <footer class="text-muted">
-      <div class="container">
-        <p class="float-right">
-          <a href="#">Back to top</a>
-        </p>
-      </div>
-    </footer> -->
+            {% for prediction_items in predictions %}
+            <div class="col-md-4">
+                <div class="card border-0 mb-4">
+                    <img class="card-img-top" src="{{ MEDIA_URL }}{{ prediction_items.path }}" alt="Prediction Image">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <strong>MATCH {{ forloop.counter }}</strong> <br>
+                            MAKE: {{ prediction_items.make }} <br>
+                            MODEL: {{ prediction_items.model }} <br>
+                            YEAR: {{ prediction_items.year }} <br>
+                            BODY-STYLE: {{ prediction_items.body }} <br>
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a type="button" class="btn btn-sm btn-outline-secondary" href={{ prediction_items.url }}>Browse listings</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
