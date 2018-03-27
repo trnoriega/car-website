@@ -148,3 +148,5 @@ def predictions(request):
     print(predictions_dict)
     return render(request, 'classifier/predictions.html', context=predictions_dict)
 
+def about(request):
+    return render(request, 'classifier/about.html', context={})

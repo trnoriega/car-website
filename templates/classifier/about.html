@@ -1,0 +1,50 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>CarMatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <header class="py-3">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+              <a class="nav-link text-muted" href="{% url 'landing:index' %}">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{% url 'classifier:index' %}">CarMatch</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://github.com/trnoriega">Github</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
+          </li>
+        </ul>
+        <div class="col text-center">
+          <h1>About CarMatch</h1>
+        </div>
+      </header>
+      <div class="row align-items-start">
+        <div class="col text-center">
+          <p class="lead text-muted">
+                CarMatch was conceived and developed during three weeks while I was a fellow with <a href="https://www.insightdatascience.com/">Insight Data Science</a>.<br>
+                It uses an Inception Neural Network implented in Keras (with a TensorFlow backend) to identify 196 different car classes.<br><br>
+                The Github repo for the network training experiments can be found <a href="https://github.com/trnoriega/car-classifier">here</a>.<br>
+                The Github repo for the Django frontend can be found <a href="https://github.com/trnoriega/car-website">here</a>.<br><br>
+                An accompanying presentation explaining how it was developed can be downloaded
+                <a href="{% static "classifier/files/CarMatch_presentation.pdf" %}">here</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
