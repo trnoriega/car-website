@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'landing',
-    'classifier',
+    # 'classifier',
     'savory',
 ]
 
