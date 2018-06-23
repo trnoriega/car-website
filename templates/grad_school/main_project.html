@@ -3,7 +3,7 @@
 {% load static %}
 
 <html lang="en">
-  <head>
+<head>
     <meta charset="utf-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,90 +15,83 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
-  </head>
-  <body>
-    <div class="container">
-      <header class="py-3">
-      <ul class="nav justify-content-end">
-        <li class="nav-item">
-          <a class="nav-link text-muted"
-             href="{%  url 'landing:index' %}">Projects</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-muted"
-             href="{% url 'grad_school:about' %}">About</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-muted"
-             href="https://github.com/trnoriega">Github</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link text-muted"
-             href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
-        </li>
-      </ul>
-      <div class="col text-center">
-        <h1>
-            Three different ways to study ribosomes interacting with signal
-            recognition particles
-        </h1>
-      </div>
-      </header>
-      <div class="row align-items-start">
-        <div class="col-md-4">
-          <div class="card border-0 mb-4">
-            <img class="card-img-top"
-                 height="300"
-                 src="{% static "grad_school/images/sm-tirf.jpg" %}"
-                 alt="Static ribosomes dynamic SRP">
-            <div class="card-body">
-              <p class="card-text">
-                <a class="text-dark"
-                   href="{% url 'grad_school:static_dynamic' %}">
-                  <strong>
-                      Static ribosomes and dynamic signal recognition particles
-                  </strong>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-4">
-            <img class="card-img-top"
-                 height="300"
-                 src="{% static "grad_school/images/zmw.jpg" %}"
-                 alt="Dynamic ribosomes dynamic SRP">
-            <div class="card-body">
-              <p class="card-text">
-                <a class="text-dark"
-                   href="#">
-                  <strong>
-                      Dynamic ribosomes and dynamic signal recognition
-                      particles
-                  </strong>
-                </a>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card border-0 mb-4">
-            <img class="card-img-top"
-                 height="300"
-                 src="{% static "grad_school/images/simulated_run.jpg" %}"
-                 alt="Side Project">
-            <div class="card-body">
-              <p class="card-text">
-                <a class="text-dark"
+</head>
+<body>
+<div class="container">
+    <header class="py-3">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'landing:index' %}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
                    href="{% url 'grad_school:index' %}">
-                    <strong>Simulating the system</strong>
-                </a>
-              </p>
-            </div>
-          </div>
+                    Single Molecule Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://github.com/trnoriega">Github</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://www.linkedin.com/in/thomasnoriega">
+                    LinkedIn</a>
+            </li>
+        </ul>
+        <div class="col text-center">
+            <h1>
+                Three different ways to study ribosomes interacting with signal
+                recognition particles </h1>
         </div>
-      </div>
+    </header>
+    <div class="row align-items-start">
+        <div class="col-md-4">
+            <div class="card border-0 mb-4">
+                <img class="card-img-top" height="300" src="{% static "grad_school/images/sm-tirf.jpg" %}" alt="Static ribosomes dynamic SRP">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a class="text-dark" href="{% url 'grad_school:static_dynamic' %}">
+                            <strong>
+                                Static ribosomes and dynamic signal recognition particles
+                            </strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 mb-4">
+                <img class="card-img-top" height="300" src="{% static "grad_school/images/zmw.jpg" %}" alt="Dynamic ribosomes dynamic SRP">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a class="text-dark" href="#">
+                            <strong>
+                                Dynamic ribosomes and dynamic signal recognition
+                                particles
+                            </strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card border-0 mb-4">
+                <img class="card-img-top" height="300" src="{% static "grad_school/images/simulated_run.jpg" %}" alt="Side Project">
+                <div class="card-body">
+                    <p class="card-text">
+                        <a class="text-dark" href="{% url 'grad_school:index' %}">
+                            <strong>Simulating the system</strong>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+</div>
+</body>
 </html>
