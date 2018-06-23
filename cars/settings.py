@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'landing',
     # 'classifier',
     'savory',
+    'grad_school'
 ]
 
 MIDDLEWARE = [

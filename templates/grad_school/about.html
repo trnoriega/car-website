@@ -1,0 +1,48 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>CarMatch</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <header class="py-3">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+              <a class="nav-link text-muted" href="{% url 'landing:index' %}">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{% url 'savory:index' %}">Savory or Not</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://github.com/trnoriega">Github</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
+          </li>
+        </ul>
+        <div class="col text-center">
+          <h1>About Savory or Not</h1>
+        </div>
+      </header>
+      <div class="row align-items-start">
+        <div class="col text-center lead text-muted">
+          <p>
+            Savory or Not was my application project for the <a href="https://www.insightdatascience.com/">Insight Data Science Fellowship</a>
+          </p><p>
+            I generated a dataset of flavor molecules with their chemi-informatic features and used that to compare and train several machine learning classifiers.
+          </p><p>The Github repo for the project can be found <a href="https://github.com/trnoriega/fema-flavor-classifier">here</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

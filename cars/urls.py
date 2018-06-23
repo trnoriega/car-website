@@ -24,5 +24,6 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     # url(r'^carmatch/', include('classifier.urls')),
     url(r'^savory/', include('savory.urls')),
+    url(r'^grad-school/', include('grad_school.urls')),
     url(r'^', include('landing.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
