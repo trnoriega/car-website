@@ -1,0 +1,199 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Savory or Not</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="container">
+      <header class="py-3">
+        <ul class="nav justify-content-end">
+          <li class="nav-item">
+              <a class="nav-link text-muted" href="{% url 'landing:index' %}">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="{% url 'savory:about' %}">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://github.com/trnoriega">Github</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-muted" href="https://www.linkedin.com/in/thomasnoriega">LinkedIn</a>
+          </li>
+        </ul>
+        <div class="col text-center">
+          <h1>Savory or Not</h1>
+          <h2>Flavor chemical database and classifier</h2>
+        </div>
+      </header>
+      <div class="row align-items-start">
+        <div class="col text-start lead text-muted">
+            <h2 class="text-dark">This project has 4 main parts:</h2>
+            <ol>
+              <li>Scrape two flavor industry websites to create a database of flavor chemicals and their flavor descriptors</li>
+              <li>Find the underlying flavor profiles in the database to create labels for a machine learning classifier</li>
+              <li>Calculate chemical properties that could be used as features in a machine learning classifier</li>
+              <li>Train a classifier to identify chemical class</li>
+            </ol>
+            <h2 class="text-dark">Making the flavor chemical database</h2>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/1_fema_extraction.ipynb">1_fema_extraction</a>:</strong>
+            </p>
+            <p>In this notebook I extract information from the The Flavor and Extract Manufacturers Association (FEMA) website.</p>
+            <p>Each chemical has its own page (for example,
+              <a href="https://www.femaflavor.org/acetic-acid-2">acetic acid</a>) from which I extracted:
+              <ul>
+                <li>Flavor descriptors</li>
+                <li>FEMA and Chemical Abstracts Service (CAS) registry numbers</li>
+              </ul>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/2_jecfa_extraction.ipynb">2_jecfa_extraction</a>
+              </strong>
+            </p>
+            <p>In this notebook I extract information from the the Joint FAO/WHO Expert Committee on Food Additives (JECFA) website.</p>
+            <p>Each chemical has its own page (for example,
+              <a href="http://www.fao.org/food/food-safety-quality/scientific-advice/jecfa/jecfa-flav/details/en/c/3/">acetic acid</a>) from which I extracted:
+              <ul>
+                <li>Odor/flavor</li>
+                <li>Synonyms</li>
+                <li>Molecular weight</li>
+                <li>JECFA and FEMA numbers</li>
+              </ul>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/3_fema_jecfa_merge.ipynb">3_fema_jecfa_merge</a>
+              </strong>
+            </p>
+            <p>In this notebook I merge the information extracted from the FEMA and JECFA websites. I make sure that each entry is for the
+              same chemical and that all chemicals included have usable flavor/aroma descriptors.</p>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/4_rdkit_chemical_matching.ipynb">4_rdkit_chemical_matching</a>
+              </strong>
+            </p>
+            <p>In this notebook I pair the chemicals found above with their RDkit representations. </p>
+            <p>The
+              <a href="http://www.rdkit.org/docs/Overview.html">RDkit</a> is a chemical informatics toolkit. It allows for the calculation of chemical descriptors which can then be used
+              as features for machine learning tasks. </p>
+            <p>By this point I have
+              <strong>2170 chemicals</strong> that can be used to train a machine learning classifier. </p>
+            <h2 class="text-dark">Unsupervised clustering based on flavor descriptors</h2>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/5_descriptor_clustering.ipynb">5_descriptor_clustering</a>
+              </strong>
+            </p>
+            <p>In this notebook I use K-Means clustering to group the flavor chemicals based on their flavor and aroma descriptors.</p>
+            <p>I found two minimal groups:</p>
+            <ul>
+              <li>One large
+                <strong>fruity, floral</strong> group with 1880 chemicals</li>
+              <li>A smaller
+                <strong>savory, roast</strong> group with 290 chemicals</li></ul>
+            <p>They can be visualized with word clouds of all the descriptors in each group:</p>
+            <p>
+              <img alt="Wordclouds" src="{% static "savory/images/1_wordcloud.png" %}"/>
+            </p>
+            <p>I can now use these labels to train a supervised machine learning classifier.</p>
+            <h2>Calculating chemical properties to use as machine learning features</h2>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/6_property_calculations.ipynb">6_property_calculations</a>
+              </strong>
+            </p>
+            <p>In this notebook I use the RDKit to calculate several quantitative chemical properties. I also generated three different
+              "chemical fingerprints" based on either
+              <a href="http://rdkit.org/docs/api/rdkit.Chem.MACCSkeys-pysrc.html">chemical fragments</a> ,
+              <a href="http://infochim.u-strasbg.fr/cgi-bin/predserv-cgi/ChemAxon/JChem/doc/user/ECFP.html">circular topology</a>, or
+              <a href="http://www.daylight.com/dayhtml/doc/theory/theory.finger.html">path-based topology</a> for each molecule. In all
+              <strong>4422 features</strong> were generated for each chemical.</p>
+            <h2>Training and testing a classifier to identify chemical class</h2>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/7_algorithm_comparison.ipynb">7_algorithm_comparison</a>
+              </strong>
+            </p>
+            <p>In this notebook I compare unoptimized Naive Bayes, Support Vector Machines, Adaboost, Logistic Regression, and Multi-layer
+              Perceptron classifiers to see if any stand out with this dataset. </p>
+            <p>A comparison of the the average and 95% confidence intervals in terms of precision, recall, Matthews correlation, and area
+              under Receiver Operating Characteristic curve (roc_auc) for the unoptimized classifiers: </p>
+            <p>
+              <img alt="Algorithm comparison" src="{% static "savory/images/2_unoptimized_comparison.png" %}"/>
+            </p>
+            <p>Based on these results I decided to proceed with parameter optimization for:</p>
+            <ul>
+              <li>
+                <strong>Adaboost</strong>
+              </li>
+              <li>
+                <strong>Logistic Regression</strong>
+              </li>
+              <li>
+                <strong>Multi-layer perceptron</strong>
+              </li></ul>
+            <p>Support Vector Machines performed badly, and Naive Bayes don\'t have many parameters to optimize, although its worth noting
+              that the Bernoulli Naive Bayes performed as well (if not better in terms of recall) than the other top classifiers.</p>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/8_parameter_optimization.ipynb">8_parameter_optimization</a>
+              </strong>
+            </p>
+            <p>In this notebook I exhaustively searched hyper-parameter space for the AdaBoost, Logistic Regression, and Multiple-layer
+              Perceptron classifiers.</p>
+            <p>A comparison of the average scores and 95% confidence interval of the three optimized estimators:</p>
+            <p>
+              <img alt="Optimized comparison" src="{% static "savory/images/3_optimized_comparison.png" %}"/>
+            </p>
+            <p>These results indicate that the optimized
+              <strong>Logistic Regression classifier performed best</strong> with this dataset. </p>
+            <p>
+              <strong>
+                <a href="https://github.com/trnoriega/fema-flavor-classifier/blob/master/9_estimator_analysis.ipynb">9_estimator_analysis</a>
+              </strong>
+            </p>
+            <p>In this notebook I look at the best classifier and how it performs on the dataset. </p>
+            <p>The best classifier was a
+              <a href="http://scikit-learn.org/stable/modules/linear_model.html#logistic-regression">Logistic Regression</a> algorithm with:
+              <ul>
+                <li>Regularization <strong>C parameter of 0.1</strong></li>
+                <li>An roc_auc score of 0.76 on the held-out test data, which indicates that the estimator has
+                    a <strong>0.76 probability of ranking a random savory chemical above a random non-savory chemical</strong>.</li>
+              </ul>
+            <p>The <strong>
+                <em>validation curve</em>
+              </strong> of this parameter shows that its C value is at the sweet spot with the highest score, and lowest amount of variability:</p>
+            <p>
+              <img alt="Validation Curve" src="{% static "savory/images/3_val_curve.png" %}"/>
+            </p>
+            <ul>
+              <li>
+                <p>Anything below 0.1 produces an underfit (high bias) model, with low training and test scores. </p></li>
+              <li>
+                <p>Anything above 0.1 produces an overfit (high variance) model, with high training scores that don't generalize to the
+                  test data.</p></li></ul>
+            <p>The
+              <strong>
+                <em>learning curve</em>
+              </strong> for this parameter argues that the current model is still relatively overfit (high variance) due to a persistent gap between
+              training and test scores, regardless of training example size:</p>
+            <p>
+              <img alt="Learning Curve" src="{% static "savory/images/4_learn_curve.png" %}"/>
+            </p>
+            <p>This suggests that the best way to further improve this estimator would be to
+              <strong>add more training examples</strong>. </p>
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

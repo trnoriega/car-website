@@ -11,3 +11,7 @@ def about(request):
 
 def main_project(request):
     return render(request, 'grad_school/main_project.html')
+
+
+def static_dynamic(request):
+    return render(request, 'grad_school/static_dynamic.html')

@@ -45,36 +45,55 @@
       </div>
       </header>
       <div class="row align-items-start">
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card border-0 mb-4">
             <img class="card-img-top"
-                 height="500"
+                 height="300"
                  src="{% static "grad_school/images/sm-tirf.jpg" %}"
-                 alt="Main Project">
+                 alt="Static ribosomes dynamic SRP">
             <div class="card-body">
               <p class="card-text">
-                <a class="text-dark" href="{% url 'grad_school:main_project' %}">
-                  <strong>Main Project</strong>
+                <a class="text-dark"
+                   href="{% url 'grad_school:static_dynamic' %}">
+                  <strong>
+                      Static ribosomes and dynamic signal recognition particles
+                  </strong>
                 </a>
-                <br> Three different ways to look at ribosome interactions
-                  with signal recognition particles
               </p>
             </div>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-4">
           <div class="card border-0 mb-4">
             <img class="card-img-top"
-                 height="500"
-                 src="{% static "grad_school/images/mito-nucleoids.jpg" %}"
+                 height="300"
+                 src="{% static "grad_school/images/zmw.jpg" %}"
+                 alt="Dynamic ribosomes dynamic SRP">
+            <div class="card-body">
+              <p class="card-text">
+                <a class="text-dark"
+                   href="#">
+                  <strong>
+                      Dynamic ribosomes and dynamic signal recognition
+                      particles
+                  </strong>
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="card border-0 mb-4">
+            <img class="card-img-top"
+                 height="300"
+                 src="{% static "grad_school/images/simulated_run.jpg" %}"
                  alt="Side Project">
             <div class="card-body">
               <p class="card-text">
-                <a class="text-dark" href="{% url 'grad_school:index' %}">
-                    <strong>Side Project</strong>
+                <a class="text-dark"
+                   href="{% url 'grad_school:index' %}">
+                    <strong>Simulating the system</strong>
                 </a>
-                <br> Quantitative imaging of mitochondrial tubules and
-                  nucleoids
               </p>
             </div>
           </div>
