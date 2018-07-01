@@ -9,5 +9,6 @@ urlpatterns = [
     url(r'about', views.about, name='about'),
     url(r'main-project', views.main_project, name='main_project'),
     url(r'static-dynamic', views.static_dynamic, name='static_dynamic'),
-    url(r'dynamic-dynamic', views.dynamic_dynamic, name='dynamic_dynamic')
+    url(r'dynamic-dynamic', views.dynamic_dynamic, name='dynamic_dynamic'),
+    url(r'simulation', views.simulation, name='simulation'),
 ]

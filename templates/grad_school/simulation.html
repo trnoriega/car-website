@@ -1,0 +1,64 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Simulating the system</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <header class="py-3">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'landing:index' %}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:index' %}">
+                    Single Molecule Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:main_project' %}">
+                    Main Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://github.com/trnoriega">Github</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://www.linkedin.com/in/thomasnoriega">
+                    LinkedIn</a>
+            </li>
+        </ul>
+        <div class="col text-center">
+            <h1>Simulating the system</h1>
+        </div>
+    </header>
+    <div class="row align-items-start">
+        <div class="col text-start lead text-muted">
+            <p>
+                SIMULATIONS!!!
+            </p>
+        </div>
+    </div>
+</div>
+</body>
+</html>

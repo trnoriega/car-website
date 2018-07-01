@@ -19,3 +19,7 @@ def static_dynamic(request):
 
 def dynamic_dynamic(request):
     return render(request, 'grad_school/dynamic_dynamic.html')
+
+
+def simulation(request):
+    return render(request, 'grad_school/simulation.html')

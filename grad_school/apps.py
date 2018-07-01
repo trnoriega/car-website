@@ -1,5 +1,5 @@
 from django.apps import AppConfig
 
 
-class SavoryConfig(AppConfig):
+class GradSchoolConfig(AppConfig):
     name = 'grad_school'
