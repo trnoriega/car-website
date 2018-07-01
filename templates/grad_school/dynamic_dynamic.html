@@ -55,59 +55,98 @@
     <div class="row align-items-start">
         <div class="col text-start lead text-muted">
             <p>
-                I developed a system to visualize thousands of individual
-                static ribosomes (red spots) interacting with thousands of
-                individual signal recognition particles (SRPs, green spots).
-                Each experiment generates 5-10 movies like this:</p>
-            <iframe width="560" height="400"
-                    src="https://www.youtube.com/embed/qfBWuhdDOOQ"
-                    frameborder="0" allow="autoplay; encrypted-media"
-                    allowfullscreen>
-            </iframe>
+                Previously, only signal recognition particles (SRPs)
+                interacting with ribosomes that had been forced into a static
+                conformation could be studied. This meant that we could not
+                learn about a whole set of the interaction’s dynamics.
+            </p>
             <p>
-                (The inset with a blue border is a zoom-in of the spots
-                surrounded by the yellow rectangle. </p>
+                By using a modified microscopic setup, originally designed to
+                sequence DNA, I was able to observe ribosomes undergoing their
+                normal dynamics at the same time as they interacted with SRPs.
+            </p>
             <p>
-                I converted each of these movies into data sets to analyze and
-                understand how SRPs interact with ribosomes over time. Using
-                scripts
+                In this setup 150,000 holes, each with a 1-micron diameter, are
+                patterned into a thin slice of aluminum. Such a slice is shown
+                below. The dark circles in the zoomed in inset on the lower
+                right of the image (expanded from the region surrounded by the
+                dashed rectangle) are the microscopic holes. Each one of these
+                holes serves as a tiny reaction volume were dynamic ribosomes
+                can be observed interacting with dynamic SRPs, thereby
+                recapitulating the complete interaction.
+            </p>
+            <p>
+                <img alt="Zero Mode Waveguide"
+                         height="400"
+                         src="{% static "grad_school/images/zmw.jpg" %}"/>
+            </p>
+            <p>
+                I converted each of the reactions occurring in the microscopic
+                holes into data-sets, so that the dynamics of SRP-ribosome 
+                interactions could be analyzed. I wrote scripts that allowed me 
+                to
                 <a href="https://github.com/trnoriega/single-molecule/blob/master/fretSelector_script/fretSelector.m">
-                    (like this one)</a>
-                I cleaned up the data sets to only include and analyze spots
-                that conveyed useful information.
-                For example, the image below shows a single ribosome
-                (represented by the red line) interacting with two SRP
-                molecules (represented by the green line) over the span of 4
-                minutes. I could determine arrival times and residence times
-                for each interaction: </p>
+                narrow down </a>
+                which wells contained useful information as well as
+                <a href="https://github.com/trnoriega/single-molecule/blob/master/stateAssign_function/stateAssign.m">
+                carefully annotate </a>
+                the useful signals. For example, the image below shows a single
+                 ribosome that is changing over time (represented by the green
+                and orange lines) interacting with multiple SRPs (represented
+                by the red line). The nature of each signal is indicated by the
+                 arrows and circles.
+            </p>
             <p>
-                <img alt="Ribosome SRP trace"
+                <img alt="ZMW trace"
                      height="400"
-                     src="{% static "grad_school/images/trace.jpg" %}"/></p>
-            <p>These analyses allowed me to discover several new biological
-                facts. For example, a single SRP molecule can take on several
-                distinct states when bound to a ribosome (characterized by
-                their spectral properties as HIGH, INT -for intermediate-, and
-                LOW). The image below summarizes hundreds of SRP changes on
-                ribosomes, highlighting SRP’s three states and their different
-                switching characteristics:</p>
+                     src="{% static "grad_school/images/zmw_trace.jpg" %}"/>
+            </p>
             <p>
-                <img alt="SRP state transitions"
-                     height="400"
-                     src="{% static "grad_school/images/transitions.jpg" %}"/></p>
-            <p>I could also show that how fast SRPs take to get to ribosomes
-                (arrival-time), and how long they remain there
-                (residence-time), depends on the nature of the ribosomes. The
-                images below summarize thousands of interactions between SRPs
-                and different ribosomes:</p>
+                By analyzing thousands of these dynamic SRP-ribosome
+                interactions I have been able to confirm past observations. For
+                 example, the duration of SRP-ribosome interactions depends on
+                how many times each ribosome has previously interacted with SRP
+                 (as shown in the box plot below).
+            </p>
             <p>
-                <img alt="SRP state transitions"
+                <img alt="ZMW lifetimes"
                      height="400"
-                     src="{% static "grad_school/images/arrivals-residence-times.jpg" %}"/></p>
-            <p>This work led to the publication of a research article
-                <a href="{% static "grad_school/files/trn-jbc.pdf" %}">
-                    (download here) </a>
-                in the Journal of Biological Chemistry on July 2014.</p>
+                     src="{% static "grad_school/images/zmw_lifetimes.jpg" %}"/>
+            </p>
+            <p>
+                More importantly, I have also been able to gain significant new
+                 insights into the biology of how SRP interacts with ribosomes.
+                 For example, because I can track ribosome dynamics, I was able
+                 to observe exactly when SRP starts interacting with ribosomes.
+                 The image below shows that SRP’s first interactions with a
+                ribosome mostly occur at a very specific ribosome state.
+            </p>
+            <p>
+                <img alt="ZMW first arrivals"
+                     height="400"
+                     src="{% static "grad_school/images/zmw-first-arrivals.jpg" %}"/>
+            </p>
+            <p>
+                The combination of a coordinated first arrival with
+                increasingly long interactions leads to a switch-like behavior
+                of SRP-ribosome interactions. Ribosomes only really interact
+                with SRP after they change into a particular state, as shown in
+                 the figure below. This helps explain a long-standing question
+                about how SRPs in the cell avoid non-productive interactions
+                with ribosomes.
+            </p>
+            <p>
+                <img alt="ZMW residence times"
+                     height="400"
+                     src="{% static "grad_school/images/zmw-residence-times.jpg" %}"/>
+            </p>
+            <p>
+                This work led to the publication of a research article
+                <a href="{% static "grad_school/files/trn-elife.pdf" %}">
+                     (download here) </a>
+                in eLIFE on October 2014
+
+            </p>
         </div>
     </div>
 </div>
