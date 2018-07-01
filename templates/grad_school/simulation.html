@@ -55,7 +55,40 @@
     <div class="row align-items-start">
         <div class="col text-start lead text-muted">
             <p>
-                SIMULATIONS!!!
+                Because a lot of dynamic parameters can influence how signal
+                recognition particles interact with ribosomes, I wrote
+                <a href="https://github.com/trnoriega/single-molecule/blob/master/simulator_script/simulator.m">
+                    scripts based on stochastic simulation algorithms
+                </a>
+                to simulate what experiments would look like when different
+                parameters were manipulated.
+            </p>
+            <p>
+                For example, this image shows simulated signal recognition 
+                particle (SRP)-ribosome interactions (green line, 0 is no 
+                interaction, 1 is interaction) that depend on 5 simultaneous 
+                processes (blue solid and dashed lines, red solid and dashed 
+                lines, and black dashed line):
+            </p>
+            <p>
+                <img alt="Simulation run"
+                     height="400"
+                     src="{% static "grad_school/images/simulation-run.jpg" %}"/>
+            </p>
+            <p>
+                This allowed me to run thousands of different simulations to
+                understand what parameters were contributing most significantly
+                 to my experimental signal and statistical analyses.
+            </p>
+            <p>
+                For example, the image below shows how independently changing
+                three parameters affected SRP arrival- and residence-times on
+                ribosomes (red, blue, and green lines):
+            </p>
+            <p>
+                <img alt="Simulation run"
+                     height="400"
+                     src="{% static "grad_school/images/simulation-arrivals-residences.jpg" %}"/>
             </p>
         </div>
     </div>
