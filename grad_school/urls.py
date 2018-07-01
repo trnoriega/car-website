@@ -8,5 +8,6 @@ urlpatterns = [
     url(r'^$', views.index, name='index'),
     url(r'about', views.about, name='about'),
     url(r'main-project', views.main_project, name='main_project'),
-    url(r'static-dynamic', views.static_dynamic, name='static_dynamic')
+    url(r'static-dynamic', views.static_dynamic, name='static_dynamic'),
+    url(r'dynamic-dynamic', views.dynamic_dynamic, name='dynamic_dynamic')
 ]

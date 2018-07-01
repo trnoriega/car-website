@@ -1,0 +1,115 @@
+<!doctype html>
+
+{% load static %}
+
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>Dynamic ribosomes dynamic SRPs</title>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+    <header class="py-3">
+        <ul class="nav justify-content-end">
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'landing:index' %}">Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:index' %}">
+                    Single Molecule Projects</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:main_project' %}">
+                    Main Project</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="{% url 'grad_school:about' %}">About</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://github.com/trnoriega">Github</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-muted"
+                   href="https://www.linkedin.com/in/thomasnoriega">
+                    LinkedIn</a>
+            </li>
+        </ul>
+        <div class="col text-center">
+            <h1>Dynamic ribosomes and dynamic signal recognition particles</h1>
+        </div>
+    </header>
+    <div class="row align-items-start">
+        <div class="col text-start lead text-muted">
+            <p>
+                I developed a system to visualize thousands of individual
+                static ribosomes (red spots) interacting with thousands of
+                individual signal recognition particles (SRPs, green spots).
+                Each experiment generates 5-10 movies like this:</p>
+            <iframe width="560" height="400"
+                    src="https://www.youtube.com/embed/qfBWuhdDOOQ"
+                    frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen>
+            </iframe>
+            <p>
+                (The inset with a blue border is a zoom-in of the spots
+                surrounded by the yellow rectangle. </p>
+            <p>
+                I converted each of these movies into data sets to analyze and
+                understand how SRPs interact with ribosomes over time. Using
+                scripts
+                <a href="https://github.com/trnoriega/single-molecule/blob/master/fretSelector_script/fretSelector.m">
+                    (like this one)</a>
+                I cleaned up the data sets to only include and analyze spots
+                that conveyed useful information.
+                For example, the image below shows a single ribosome
+                (represented by the red line) interacting with two SRP
+                molecules (represented by the green line) over the span of 4
+                minutes. I could determine arrival times and residence times
+                for each interaction: </p>
+            <p>
+                <img alt="Ribosome SRP trace"
+                     height="400"
+                     src="{% static "grad_school/images/trace.jpg" %}"/></p>
+            <p>These analyses allowed me to discover several new biological
+                facts. For example, a single SRP molecule can take on several
+                distinct states when bound to a ribosome (characterized by
+                their spectral properties as HIGH, INT -for intermediate-, and
+                LOW). The image below summarizes hundreds of SRP changes on
+                ribosomes, highlighting SRP’s three states and their different
+                switching characteristics:</p>
+            <p>
+                <img alt="SRP state transitions"
+                     height="400"
+                     src="{% static "grad_school/images/transitions.jpg" %}"/></p>
+            <p>I could also show that how fast SRPs take to get to ribosomes
+                (arrival-time), and how long they remain there
+                (residence-time), depends on the nature of the ribosomes. The
+                images below summarize thousands of interactions between SRPs
+                and different ribosomes:</p>
+            <p>
+                <img alt="SRP state transitions"
+                     height="400"
+                     src="{% static "grad_school/images/arrivals-residence-times.jpg" %}"/></p>
+            <p>This work led to the publication of a research article
+                <a href="{% static "grad_school/files/trn-jbc.pdf" %}">
+                    (download here) </a>
+                in the Journal of Biological Chemistry on July 2014.</p>
+        </div>
+    </div>
+</div>
+</body>
+</html>
