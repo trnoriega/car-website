@@ -31,11 +31,6 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link text-muted"
-                   href="{% url 'grad_school:main_project' %}">
-                    Main Project</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link text-muted"
                    href="{% url 'grad_school:about' %}">About</a>
             </li>
             <li class="nav-item">
@@ -49,66 +44,49 @@
             </li>
         </ul>
         <div class="col text-center">
-            <h1>Static ribosomes and dynamic signal recognition particles</h1>
+            <h1>Mitochondrial Tubules and Nucleoids</h1>
         </div>
     </header>
     <div class="row align-items-start">
         <div class="col text-start lead text-muted">
             <p>
-                I developed a system to visualize thousands of individual
-                static ribosomes (red spots) interacting with thousands of
-                individual signal recognition particles (SRPs, green spots).
-                Each experiment generates 5-10 movies like this:</p>
+                Christof Osman, a post-doctoral researcher in my lab, developed
+                 a way to make high resolution 3-dimensional (3D) microscope
+                 images of single baker’s yeast cells. The mitochondrial tubule
+                 network (red) and the mitochondrial DNA nucleoids (green) can
+                 be clearly seen:</p>
             <iframe width="560" height="400"
-                    src="https://www.youtube.com/embed/qfBWuhdDOOQ"
+                    src="https://www.youtube.com/embed/XFqKK3af3B8?rel=0"
                     frameborder="0" allow="autoplay; encrypted-media"
                     allowfullscreen>
             </iframe>
             <p>
-                (The inset with a blue border is a zoom-in of the spots
-                surrounded by the yellow rectangle. </p>
+                Our challenge was to take these images and develop a set of
+                 computational tools that would allow analysis of hundreds of
+                 the images to determine whether the green spots were randomly
+                 distributed along the red network.</p>
             <p>
-                I converted each of these movies into data sets to analyze and
-                understand how SRPs interact with ribosomes over time. Using
-                scripts
-                <a href="https://github.com/trnoriega/single-molecule/blob/master/fretSelector_script/fretSelector.m">
-                    (like this one)</a>
-                I cleaned up the data sets to only include and analyze spots
-                that conveyed useful information.
-                For example, the image below shows a single ribosome
-                (represented by the red line) interacting with two SRP
-                molecules (represented by the green line) over the span of 4
-                minutes. I could determine arrival times and residence times
-                for each interaction: </p>
+                The first step was to convert the microscope images into 3D
+                 coordinates that could be interpreted by Matlab scripts: </p>
+            <iframe width="560" height="400"
+                    src="https://www.youtube.com/embed/Wmk7TO-ERck?rel=0"
+                    frameborder="0" allow="autoplay; encrypted-media"
+                    allowfullscreen>
+            </iframe>
             <p>
-                <img alt="Ribosome SRP trace"
-                     height="400"
-                     src="{% static "grad_school/images/trace.jpg" %}"/></p>
-            <p>
-                These analyses allowed me to discover several new biological
-                facts. For example, a single SRP molecule can take on several
-                distinct states when bound to a ribosome (characterized by
-                their spectral properties as HIGH, INT -for intermediate-, and
-                LOW). The image below summarizes hundreds of SRP changes on
-                ribosomes, highlighting SRP’s three states and their different
-                switching characteristics:</p>
-            <p>
-                <img alt="SRP state transitions"
-                     height="400"
-                     src="{% static "grad_school/images/transitions.jpg" %}"/></p>
-            <p>I could also show that how fast SRPs take to get to ribosomes
-                (arrival-time), and how long they remain there
-                (residence-time), depends on the nature of the ribosomes. The
-                images below summarize thousands of interactions between SRPs
-                and different ribosomes:</p>
-            <p>
-                <img alt="SRP state transitions"
-                     height="400"
-                     src="{% static "grad_school/images/arrivals-residence-times.jpg" %}"/></p>
+                We could then analyze the 3D cell coordinates to quantitate the
+                 properties of each cell. For example, we could determine the
+                 distances between all the mitochondrial nucleoids, the
+                 distance between each nucleoid and the nearest mitochondrial
+                 tip, or the length of each mitochondrial network. These
+                 quantitative analyses then allowed us to test how perturbing
+                 different cellular functions affected mitochondrial shape and
+                 nucleoid number. </p>
             <p>This work led to the publication of a research article
-                <a href="{% static "grad_school/files/trn-jbc.pdf" %}">
+                <a href="{% static "grad_school/files/co-pnas.pdf" %}">
                     (download here) </a>
-                in the Journal of Biological Chemistry on July 2014.</p>
+                in the Proceedings of the National Academy of Sciences on
+                 February 2015.</p>
         </div>
     </div>
 </div>
