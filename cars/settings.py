@@ -83,6 +83,10 @@ WSGI_APPLICATION = 'cars.wsgi.application'
 
 DATABASES = {
     'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
+    },
+    'postgres': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': DB_NAME, # from project_secrets
         'USER': DB_USER, # from project_secrets
