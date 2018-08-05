@@ -23,3 +23,6 @@ def dynamic_dynamic(request):
 
 def simulation(request):
     return render(request, 'grad_school/simulation.html')
+
+def mitos(request):
+    return render(request, 'grad_school/mitos.html')

@@ -11,4 +11,5 @@ urlpatterns = [
     url(r'static-dynamic', views.static_dynamic, name='static_dynamic'),
     url(r'dynamic-dynamic', views.dynamic_dynamic, name='dynamic_dynamic'),
     url(r'simulation', views.simulation, name='simulation'),
+    url(r'mitos', views.mitos, name='mitos'),
 ]
