@@ -1,0 +1,4 @@
+outs:
+- md5: 01674502a4139fb760a44d3402c191a6
+  size: 196608
+  path: db.sqlite3
