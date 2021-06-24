@@ -1,4 +1,7 @@
+[cache]
+    dir = ../../dvc-cache
 [core]
-    remote = s3remote
-['remote "s3remote"']
-    url = s3://trn-dvc-storage/car-website/
+    remote = s3
+['remote "s3"']
+    url = s3://trn-dvc-storage
+    profile = mine
